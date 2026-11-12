@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SASYNA – The World of Research"
+description = "A local-first academic research workspace for KMTC students to structure research proposals, work with a source-grounded knowledge base, and prepare documents using configurable local LM Studio models."
+version = "1.0.0"
+id = "artifacts/sasyna"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26015
+
+[services.development]
+run = "pnpm --filter @workspace/sasyna run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sasyna", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/sasyna/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26015"
+BASE_PATH = "/"

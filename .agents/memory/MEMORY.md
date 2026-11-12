@@ -1,0 +1,1 @@
+- [Python inspection can alter runtime config](python-shell-module.md) — After shell-based Python use, check `.replit` for unrelated Python modules and remove them if they appeared.
